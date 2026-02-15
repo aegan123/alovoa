@@ -145,16 +145,16 @@ class AdminServiceTest {
         when(user3.getEmail()).thenReturn("invalid-at-invalid-com");
         Page<User> userSlice = mock(Page.class);
         UserRepository userRepoMock = mock(UserRepository.class);
-        AdminService adminService = spy(getAdminServiceWithMocks(userRepoMock));
+        AdminService adminServiceLocal = spy(getAdminServiceWithMocks(userRepoMock));
         when(userSlice.hasNext()).thenReturn(false);
         when(userSlice.getContent()).thenReturn(List.of(user1, user2, user3));
         when(userRepoMock.findAll(any(PageRequest.class))).thenReturn(userSlice);
-        doNothing().when(adminService).deleteAccount(anyLong());
-        doNothing().when(adminService).checkRights();
+        doNothing().when(adminServiceLocal).deleteAccount(anyLong());
+        doNothing().when(adminServiceLocal).checkRights();
 
-        AdminService.DeleteInvalidUsersResult result = adminService.deleteInvalidUsers();
+        AdminService.DeleteInvalidUsersResult result = adminServiceLocal.deleteInvalidUsers();
 
-        verify(adminService, times(2)).deleteAccount(anyLong());
+        verify(adminServiceLocal, times(2)).deleteAccount(anyLong());
         assertEquals(2L, result.getUsersToBeDeleted().get(0));
         assertEquals(3L, result.getUsersToBeDeleted().get(1));
         assertEquals(2L, result.getUsersDeleted().get(0));
@@ -174,8 +174,7 @@ class AdminServiceTest {
 				mock(UserReportRepository.class),
 				mock(UserNotificationRepository.class),
 				mock(ConversationRepository.class),
-				mock(UserVerificationPictureRepository.class),
-				mock(TextEncryptorConverter.class)
+				mock(UserVerificationPictureRepository.class)
 		);
 	}
 
