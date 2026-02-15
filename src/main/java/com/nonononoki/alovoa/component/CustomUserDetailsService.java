@@ -20,7 +20,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) {
 
-        User user = null;
+        User user;
         try{
             UUID uuid = UUID.fromString(username);
             user = userRepo.findByUuid(uuid);

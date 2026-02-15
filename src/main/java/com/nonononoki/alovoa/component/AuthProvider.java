@@ -10,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -61,7 +60,7 @@ public class AuthProvider implements AuthenticationProvider {
 
         captchaRepo.delete(c);
 
-        User user = null;
+        User user;
         try{
             UUID uuid = UUID.fromString(userName);
             user = userRepo.findByUuid(uuid);

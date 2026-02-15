@@ -92,9 +92,9 @@ public class DonateService {
             donationsToDtos = DonationDto.donationsToDtos(userDonationRepo
                             .findTop20ByUserDisabledFalseAndUserDatesDateOfBirthGreaterThanEqualAndUserDatesDateOfBirthLessThanEqualOrderByDateDesc(
                                     minDate, maxDate),
-                    user, userService, textEncryptor, maxEntries, ignoreIntention);
+                    user, userService, maxEntries, ignoreIntention);
         } else if (filter == FILTER_AMOUNT) {
-            donationsToDtos = DonationDto.usersToDtos(userRepo.usersDonate(minDate, maxDate), user, userService, textEncryptor,
+            donationsToDtos = DonationDto.usersToDtos(userRepo.usersDonate(minDate, maxDate), user, userService,
                     maxEntries, ignoreIntention);
         } else {
             throw new AlovoaException("filter_not_found");
@@ -103,7 +103,7 @@ public class DonateService {
         return donationsToDtos;
     }
 
-    public void donationReceivedKofi(DonationKofi donation, String key) throws UnknownHostException, MalformedURLException {
+    public void donationReceivedKofi(DonationKofi donation, String key) {
 
         try {
             logger.info(objectMapper.writeValueAsString(donation));

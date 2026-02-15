@@ -39,7 +39,7 @@ public class MessageService {
 	private MailService mailService;
 
 	public void send(Long convoId, String message)
-			throws AlovoaException, GeneralSecurityException, IOException {
+			throws AlovoaException {
 
 		User currUser = authService.getCurrentUser(true);
 

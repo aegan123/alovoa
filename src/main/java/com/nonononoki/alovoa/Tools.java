@@ -38,10 +38,8 @@ public class Tools {
     public static final int MILLION = 1000000;
     public static final int THOUSAND = 1000;
     public static final String B64IMAGEPREFIX = "data:image/";
-    public static final String B64AUDIOPREFIX = "data:audio/";
     public static final String B64PREFIX = ";base64,";
 
-    public static final String TEST = "test";
     public static final String PROD = "prod";
     public static final String DEV = "dev";
 
@@ -53,7 +51,6 @@ public class Tools {
 
     public static final long GENDER_MALE_ID = 1;
     public static final long GENDER_FEMALE_ID = 2;
-    public static final long GENDER_OTHER_ID = 3;
 
     public static final double REFERRED_AMOUNT = 0.5;
 
@@ -149,24 +146,6 @@ public class Tools {
             return 99999;
         }
     }
-
-    // https://stackoverflow.com/a/45732035
-    // CC BY-SA 3.0, Pedro Silva
-    public static Double getBase64Size(String base64String) {
-        double result = -1.0;
-        if (!base64String.isEmpty()) {
-            int padding = 0;
-            if (base64String.endsWith("==")) {
-                padding = 2;
-            } else {
-                if (base64String.endsWith("="))
-                    padding = 1;
-            }
-            result = Math.ceil((double) base64String.length() / 4) * 3 - padding;
-        }
-        return result;
-    }
-
     // https://stackoverflow.com/questions/27928/calculate-distance-between-two-latitude-longitude-points-haversine-formula/12600225#12600225
     public static final double AVERAGE_RADIUS_OF_EARTH_KM = 6371;
 

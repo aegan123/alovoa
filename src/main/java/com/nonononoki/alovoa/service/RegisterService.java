@@ -17,15 +17,12 @@ import com.nonononoki.alovoa.repo.UserIntentionRepository;
 import com.nonononoki.alovoa.repo.UserRegisterTokenRepository;
 import com.nonononoki.alovoa.repo.UserRepository;
 import jakarta.mail.MessagingException;
-import jakarta.mail.internet.AddressException;
-import jakarta.mail.internet.InternetAddress;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -107,7 +104,7 @@ public class RegisterService {
     private static final Logger logger = LoggerFactory.getLogger(RegisterService.class);
 
     public String register(RegisterDto dto)
-            throws NoSuchAlgorithmException, AlovoaException, MessagingException, IOException {
+            throws AlovoaException, MessagingException, IOException {
 
         dto.setEmail(Tools.cleanEmail(dto.getEmail()));
 

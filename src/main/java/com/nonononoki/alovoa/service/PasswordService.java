@@ -43,10 +43,7 @@ public class PasswordService {
 	@NonNull
 	private CaptchaService captchaService;
 
-	@NonNull
-	private AuthService authService;
-
-	@NonNull
+    @NonNull
 	private MailService mailService;
 	
 	@Value("${app.password-token.length}")

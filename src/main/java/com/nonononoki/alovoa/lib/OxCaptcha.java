@@ -24,7 +24,6 @@ import java.awt.image.Kernel;
 import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
-//import java.security.SecureRandom;
 import java.util.Random;
 
 import javax.imageio.ImageIO;

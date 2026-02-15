@@ -3,7 +3,6 @@ package com.nonononoki.alovoa.entity.user;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nonononoki.alovoa.entity.User;
 import com.nonononoki.alovoa.rest.MediaController;
-import com.nonononoki.alovoa.service.UserService;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

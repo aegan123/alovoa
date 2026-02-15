@@ -6,9 +6,7 @@ import com.nonononoki.alovoa.model.UserDto;
 import com.nonononoki.alovoa.repo.UserRepository;
 import com.nonononoki.alovoa.service.AuthService;
 import com.nonononoki.alovoa.service.UserService;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,20 +20,14 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 @Controller
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class AdminSearchResource {
 
     public static final String URL = "/admin-search";
-    @NonNull
+
     private AuthService authService;
-    @NonNull
     private UserService userService;
-    @NonNull
     private UserRepository userRepo;
-    @Value("${app.donation.modulus}")
-    private int donationModulus;
-    @Value("${app.donation.popup.time}")
-    private int donationPopupTime;
 
     @GetMapping(URL)
     public ModelAndView search() throws AlovoaException, InvalidKeyException, IllegalBlockSizeException,

@@ -8,7 +8,6 @@ import com.nonononoki.alovoa.service.AuthService;
 import com.nonononoki.alovoa.service.SearchService;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.ui.Model;

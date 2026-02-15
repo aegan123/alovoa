@@ -95,7 +95,7 @@ public class CaptchaService {
 				&& captcha.getText().equalsIgnoreCase(text);
 	}
 
-	private String getIpHash(String ip) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+	private String getIpHash(String ip) throws NoSuchAlgorithmException {
 		// don't need slow hashing algorithm because
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(salt.getBytes()); // salting to prevent rainbow tables

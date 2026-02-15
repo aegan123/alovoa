@@ -14,7 +14,6 @@ public interface UserVerificationPictureRepository extends JpaRepository<UserVer
 
     List<UserVerificationPicture> findByUserYes(User user);
 
-    //@Cacheable("UserVerificationPictureRepository.findByUuid")
     UserVerificationPicture findByUuid(UUID uuid);
 }
 

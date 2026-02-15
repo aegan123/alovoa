@@ -1,9 +1,7 @@
 package com.nonononoki.alovoa.html;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.nonononoki.alovoa.Tools;
 import com.nonononoki.alovoa.component.ExceptionHandler;
-import com.nonononoki.alovoa.component.TextEncryptorConverter;
 import com.nonononoki.alovoa.entity.User;
 import com.nonononoki.alovoa.entity.user.*;
 import com.nonononoki.alovoa.model.AlovoaException;
@@ -16,14 +14,11 @@ import com.nonononoki.alovoa.service.UserService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -65,9 +60,6 @@ public class ApiResource {
 
     @NonNull
     private UserService userService;
-
-    @NonNull
-    private TextEncryptorConverter textEncryptor;
 
     private static final long MAX_RESULTS = 50;
 
@@ -114,7 +106,7 @@ public class ApiResource {
     }
 
     @GetMapping("/chats/{id}")
-    public Map<String, Object> resourceChatsDetail(@PathVariable long id) throws JsonProcessingException,
+    public Map<String, Object> resourceChatsDetail(@PathVariable long id) throws
             InvalidKeyException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException,
             NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, AlovoaException {
         ModelMap map = new ModelMap();
@@ -160,7 +152,7 @@ public class ApiResource {
             boolean matched = user.getLikes().stream().anyMatch(l -> n.getUserFrom().getId().equals(l.getUserTo().getId()));
 
             if (!blockedMe && !blockedYou && !matched) {
-                NotificationDto dto = NotificationDto.notificationToNotificationDto(n, user, userService, textEncryptor, ignoreIntention);
+                NotificationDto dto = NotificationDto.notificationToNotificationDto(n, user, userService, ignoreIntention);
                 notifications.add(dto);
             }
         }
@@ -238,7 +230,7 @@ public class ApiResource {
     }
 
     @GetMapping("/blocked-users")
-    public Map<String, Object> blockedUsers() throws JsonProcessingException, InvalidKeyException,
+    public Map<String, Object> blockedUsers() throws InvalidKeyException,
             IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException,
             InvalidAlgorithmParameterException, UnsupportedEncodingException, AlovoaException {
         User user = authService.getCurrentUser(true);

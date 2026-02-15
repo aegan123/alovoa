@@ -27,14 +27,13 @@ public class RegisterController {
 
 	@PostMapping(value = "/register", consumes = "application/json")
 	public void register(@RequestBody RegisterDto dto)
-			throws NoSuchAlgorithmException, AlovoaException, MessagingException, IOException {
+			throws AlovoaException, MessagingException, IOException {
 		registerService.register(dto);
 	}
 
 	@PostMapping(value = "/register-oauth", consumes = "application/json")
 	public String registerOauth(@RequestBody RegisterDto dto) throws MessagingException, IOException, AlovoaException,
-			NumberFormatException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException,
-			NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException {
+			NumberFormatException {
 		registerService.registerOauth(dto);
 		return "profile";
 	}

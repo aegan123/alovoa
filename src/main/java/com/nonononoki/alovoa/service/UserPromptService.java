@@ -4,7 +4,6 @@ import com.nonononoki.alovoa.entity.User;
 import com.nonononoki.alovoa.entity.user.UserPrompt;
 import com.nonononoki.alovoa.model.AlovoaException;
 import com.nonononoki.alovoa.model.UserPromptDto;
-import com.nonononoki.alovoa.repo.UserPromptRepository;
 import com.nonononoki.alovoa.repo.UserRepository;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.UUID;
 
 public interface UserImageRepository extends JpaRepository<UserImage, Long> {
-    //@Cacheable("UserImageRepository.findByUuid")
     UserImage findByUuid(UUID uuid);
 }
 

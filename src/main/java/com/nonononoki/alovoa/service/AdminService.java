@@ -62,8 +62,6 @@ public class AdminService {
     private ConversationRepository conversationRepo;
     @NonNull
     private UserVerificationPictureRepository userVerificationPictureRepo;
-    @NonNull
-    private TextEncryptorConverter textEncryptor;
 
     @Value("${app.search.ignore-intention}")
     private boolean ignoreIntention;

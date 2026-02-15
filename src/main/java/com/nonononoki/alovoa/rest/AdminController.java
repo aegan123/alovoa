@@ -9,7 +9,6 @@ import jakarta.mail.MessagingException;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -19,7 +18,6 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -42,15 +40,15 @@ public class AdminController {
 
     @PostMapping("/remove-images/{uuid}")
     public void removeImages(@PathVariable UUID uuid)
-            throws NumberFormatException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException,
-            NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, AlovoaException {
+            throws NumberFormatException,
+            AlovoaException {
         adminService.removeImages(uuid);
     }
 
     @PostMapping("/remove-description/{uuid}")
     public void removeDescription(@PathVariable UUID uuid)
-            throws NumberFormatException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException,
-            NoSuchAlgorithmException, NoSuchPaddingException, InvalidAlgorithmParameterException, AlovoaException {
+            throws NumberFormatException,
+            AlovoaException {
         adminService.removeDescription(uuid);
     }
 
@@ -81,15 +79,13 @@ public class AdminController {
 
     @PostMapping("/user-verification/verify/{uuid}")
     public void userVerificationVerify(@PathVariable UUID uuid)
-            throws AlovoaException, InvalidAlgorithmParameterException,
-            IllegalBlockSizeException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException {
+            throws AlovoaException {
         adminService.verifyVerificationPicture(uuid);
     }
 
     @PostMapping("/user-verification/delete/{uuid}")
     public void userVerificationDelete(@PathVariable UUID uuid)
-            throws AlovoaException, InvalidAlgorithmParameterException,
-            IllegalBlockSizeException, NoSuchPaddingException, BadPaddingException, NoSuchAlgorithmException, InvalidKeyException {
+            throws AlovoaException {
         adminService.deleteVerificationPicture(uuid);
     }
 
@@ -101,7 +97,7 @@ public class AdminController {
     }
 
     @PostMapping("/delete-invalid-users")
-    public AdminService.DeleteInvalidUsersResult deleteInvalidUsers() throws AlovoaException, IOException {
+    public AdminService.DeleteInvalidUsersResult deleteInvalidUsers() throws AlovoaException {
         return adminService.deleteInvalidUsers();
     }
 

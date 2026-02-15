@@ -5,7 +5,6 @@ import com.nonononoki.alovoa.entity.User;
 import com.nonononoki.alovoa.rest.MediaController;
 import com.nonononoki.alovoa.service.UserService;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

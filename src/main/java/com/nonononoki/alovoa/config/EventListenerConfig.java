@@ -18,8 +18,6 @@ import com.nonononoki.alovoa.entity.User;
 import com.nonononoki.alovoa.entity.user.Gender;
 import com.nonononoki.alovoa.entity.user.UserIntention;
 import com.nonononoki.alovoa.entity.user.UserMiscInfo;
-import com.nonononoki.alovoa.model.AlovoaException;
-import com.nonononoki.alovoa.model.UserDeleteParams;
 import com.nonononoki.alovoa.repo.ConversationRepository;
 import com.nonononoki.alovoa.repo.GenderRepository;
 import com.nonononoki.alovoa.repo.UserBlockRepository;
@@ -30,7 +28,6 @@ import com.nonononoki.alovoa.repo.UserMiscInfoRepository;
 import com.nonononoki.alovoa.repo.UserNotificationRepository;
 import com.nonononoki.alovoa.repo.UserReportRepository;
 import com.nonononoki.alovoa.repo.UserRepository;
-import com.nonononoki.alovoa.service.UserService;
 
 @Component
 @RequiredArgsConstructor
@@ -166,27 +163,6 @@ public class EventListenerConfig {
 			UserIntention sex = new UserIntention();
 			sex.setText("sex");
 			userIntentionRepo.saveAndFlush(sex);
-		}
-	}
-
-	public void removeInvalidUsers() throws AlovoaException {
-		List<User> users = userRepo.findAll();
-
-		UserDeleteParams userDeleteParam = UserDeleteParams.builder().conversationRepo(conversationRepo)
-				.userBlockRepo(userBlockRepo).userHideRepo(userHideRepo).userLikeRepo(userLikeRepo)
-				.userNotificationRepo(userNotificationRepo).userRepo(userRepo).userReportRepo(userReportRepo).build();
-
-		for (User user : users) {
-			if (!user.getEmail().contains("@")) {
-				try {
-					UserService.removeUserDataCascading(user, userDeleteParam);
-					userRepo.delete(userRepo.findByEmail(user.getEmail()));
-					userRepo.flush();
-
-				} catch (Exception e) {
-					logger.error(e.getMessage());
-				}
-			}
 		}
 	}
 }

@@ -1,7 +1,6 @@
 package com.nonononoki.alovoa.html;
 
 import com.nonononoki.alovoa.Tools;
-import com.nonononoki.alovoa.component.TextEncryptorConverter;
 import com.nonononoki.alovoa.entity.User;
 import com.nonononoki.alovoa.entity.user.UserReport;
 import com.nonononoki.alovoa.model.AlovoaException;
@@ -32,7 +31,6 @@ public class AdminResource {
 
     public static final String URL = "/admin";
     private UserReportRepository userReportRepo;
-    private TextEncryptorConverter textEncryptor;
     private AuthService authService;
     private UserService userService;
     private AdminService adminService;

@@ -19,7 +19,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import uk.recurse.geocoding.reverse.Country;
 import uk.recurse.geocoding.reverse.ReverseGeocoder;
@@ -51,16 +50,11 @@ public class SearchService {
     private static ReverseGeocoder geocoder = null;
 
     private static final Set<Long> ALL_INTENTIONS = Set.of(UserIntention.MEET, UserIntention.DATE, UserIntention.SEX);
-    private static final Set<Long> ALL_GENDER_IDS = Set.of(Gender.MALE, Gender.FEMALE, Gender.OTHER);
 
-    @NonNull
-    private TextEncryptorConverter textEncryptor;
     @NonNull
     private AuthService authService;
     @NonNull
     private UserRepository userRepo;
-    @NonNull
-    private PublicService publicService;
     @NonNull
     private UserService userService;
     @NonNull

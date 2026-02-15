@@ -2,7 +2,6 @@ package com.nonononoki.alovoa.model;
 
 import java.util.Date;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

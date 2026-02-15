@@ -1,6 +1,5 @@
 package com.nonononoki.alovoa.html;
 
-import com.nonononoki.alovoa.component.TextEncryptorConverter;
 import com.nonononoki.alovoa.entity.User;
 import com.nonononoki.alovoa.entity.user.UserVerificationPicture;
 import com.nonononoki.alovoa.model.AlovoaException;
@@ -30,7 +29,6 @@ public class AdminVerificationResource {
 
     public static final String URL = "/admin-verification";
     private UserVerificationPictureRepository userVerificationPictureRepo;
-    private TextEncryptorConverter textEncryptor;
     private AuthService authService;
     private UserService userService;
 

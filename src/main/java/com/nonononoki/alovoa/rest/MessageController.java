@@ -40,7 +40,7 @@ public class MessageController {
 	@ResponseBody
 	@PostMapping(value = "/send/{convoId}", consumes = "text/plain")
 	public void send(@RequestBody String msg, @PathVariable long convoId)
-			throws AlovoaException, GeneralSecurityException, IOException {
+			throws AlovoaException {
 		messageService.send(convoId, msg);
 	}
 

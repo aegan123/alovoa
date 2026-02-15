@@ -1,10 +1,8 @@
 package com.nonononoki.alovoa.model;
 
-import com.nonononoki.alovoa.component.TextEncryptorConverter;
 import com.nonononoki.alovoa.entity.User;
 import com.nonononoki.alovoa.entity.user.UserNotification;
 import com.nonononoki.alovoa.service.UserService;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -30,7 +28,7 @@ public class NotificationDto {
     private String message;
 
     public static NotificationDto notificationToNotificationDto(UserNotification n, User currentUser, UserService userService,
-                                                                TextEncryptorConverter textEncryptor, boolean ignoreIntention)
+                                                                boolean ignoreIntention)
             throws InvalidKeyException, IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException,
             NoSuchPaddingException, InvalidAlgorithmParameterException, UnsupportedEncodingException, AlovoaException {
         NotificationDto dto = new NotificationDto();

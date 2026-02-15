@@ -5,7 +5,6 @@ import com.nonononoki.alovoa.entity.User;
 import com.nonononoki.alovoa.entity.user.Conversation;
 import com.nonononoki.alovoa.entity.user.UserProfilePicture;
 import com.nonononoki.alovoa.service.UserService;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 

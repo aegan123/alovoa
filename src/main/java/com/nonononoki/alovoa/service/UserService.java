@@ -7,7 +7,6 @@ import com.linkedin.urls.detection.UrlDetector;
 import com.linkedin.urls.detection.UrlDetectorOptions;
 import com.nonononoki.alovoa.Tools;
 import com.nonononoki.alovoa.component.ExceptionHandler;
-import com.nonononoki.alovoa.component.TextEncryptorConverter;
 import com.nonononoki.alovoa.entity.User;
 import com.nonononoki.alovoa.entity.user.*;
 import com.nonononoki.alovoa.lib.OxCaptcha;
@@ -83,8 +82,6 @@ public class UserService {
     @NonNull
     private AuthService authService;
     @NonNull
-    private MediaService mediaService;
-    @NonNull
     private UserRepository userRepo;
     @NonNull
     private GenderRepository genderRepo;
@@ -116,8 +113,6 @@ public class UserService {
     private CaptchaService captchaService;
     @NonNull
     private MailService mailService;
-    @NonNull
-    private TextEncryptorConverter textEncryptor;
     @NonNull
     private ObjectMapper objectMapper;
 
@@ -252,13 +247,6 @@ public class UserService {
 
         userVerificationPictureRepo.flush();
         userRepo.flush();
-    }
-
-    public static String stripB64Type(String s) {
-        if (s.contains(",")) {
-            return s.split(",")[1];
-        }
-        return s;
     }
 
     private static byte[] convertAudioMp3Wav(byte[] bytes) {

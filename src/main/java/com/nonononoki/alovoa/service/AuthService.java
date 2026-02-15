@@ -29,7 +29,7 @@ public class AuthService {
 
 	public synchronized User getCurrentUser(boolean throwExceptionWhenNull) throws AlovoaException {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = null;
+        User user;
 		if (auth instanceof OAuth2AuthenticationToken) {
             OAuth2User principal = (OAuth2User) auth.getPrincipal();
             if(principal instanceof CustomOAuth2User) {

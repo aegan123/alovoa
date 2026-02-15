@@ -125,8 +125,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByUuid(UUID uuid);
 
-    List<User> findByUuidIn(Collection<UUID> uuidList);
-
     long countByConfirmed(boolean confirmed);
 
     long countByConfirmedAndGenderId(boolean confirmed, long genderId);
